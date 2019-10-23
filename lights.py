@@ -1,26 +1,6 @@
 import board
 import neopixel
-from time import sleep
 import collections
-
-
-def display(red, green, blue):
-    print("Initializing lights")
-    pixels = neopixel.NeoPixel(board.D18, 3)
-    pixels.fill((0, 0, 0))
-    pixels[0] = (255, 0, 0)
-    pixels[1] = (0, 255, 0)
-    pixels[2] = (0, 0, 255)
-    sleep(2)
-    deq = collections.deque(pixels)
-    while True:
-        sleep(.05)
-        deq.rotate()
-        print(str(deq))
-        for x in range(len(pixels)):
-            pixels[x] = deq[x]
-    sleep(5)
-    pixels.deinit()
 
 
 def draw_colors(interval_start, interval_end, beginning_color,
@@ -82,5 +62,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # display(0, 0, 0)
     main()
